@@ -3,141 +3,334 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - E-Learning Hub</title>
+    <title>E-Learning Hub - Learn from the Best</title>
     <style>
-        /* === All CSS is here (no external file needed) === */
+        :root {
+            --primary: #4f46e5;
+            --dark: #111827;
+            --light: #f9fafb;
+            --gray: #6b7280;
+            --border: #e5e7eb;
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #333;
-            min-height: 100vh;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background: #ffffff;
+            color: var(--dark);
             line-height: 1.6;
         }
+
+        /* Navbar */
         .navbar {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 1rem 5%;
+            background: white;
+            padding: 1.2rem 5%;
             position: fixed;
             top: 0; left: 0; right: 0;
             z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border-bottom: 1px solid var(--border);
         }
         .logo {
-            font-size: 1.9rem;
-            font-weight: 700;
-            color: #5a67d8;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.5px;
         }
         .nav-links {
             list-style: none;
             display: flex;
-            gap: 2.5rem;
+            gap: 3rem;
         }
         .nav-links a {
             text-decoration: none;
-            color: #4a5568;
+            color: #374151;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             position: relative;
-            transition: all 0.3s ease;
+            transition: color 0.3s;
         }
-        .nav-links a:hover, .nav-links a.active {
-            color: #5a67d8;
-        }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary); }
         .nav-links a::after {
             content: '';
             position: absolute;
-            width: 0; height: 3px;
-            background: #5a67d8;
+            width: 0; height: 2.5px;
+            background: var(--primary);
             bottom: -8px; left: 50%;
             transform: translateX(-50%);
-            transition: width 0.3s ease;
+            transition: width 0.3s;
         }
         .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
 
-        .home-container {
+        /* Hero */
+        .hero {
             text-align: center;
-            padding: 180px 5% 120px;
-            color: white;
+            padding: 200px 5% 120px;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
         }
-        .home-container h1 {
-            font-size: 4.8rem;
+        .hero h1 {
+            font-size: 4.2rem;
+            font-weight: 800;
+            color: var(--dark);
             margin-bottom: 1.5rem;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.4);
-            animation: slideInLeft 1s ease-out;
         }
-        .home-container p {
-            font-size: 1.5rem;
-            max-width: 800px;
+        .hero p {
+            font-size: 1.4rem;
+            color: var(--gray);
+            max-width: 700px;
             margin: 0 auto 3rem;
-            opacity: 0.95;
-            animation: slideInRight 1s ease-out 0.3s both;
         }
         .cta-btn {
             display: inline-block;
-            background: #fff;
-            color: #5a67d8;
-            padding: 1.1rem 3.2rem;
-            border-radius: 50px;
-            font-size: 1.3rem;
+            background: var(--primary);
+            color: white;
+            padding: 1.1rem 3rem;
+            border-radius: 12px;
+            font-size: 1.2rem;
             font-weight: 700;
             text-decoration: none;
-            box-shadow: 0 12px 35px rgba(0,0,0,0.25);
-            transition: all 0.4s ease;
-            animation: bounceIn 1.6s ease-out 0.8s both;
+            box-shadow: 0 10px 30px rgba(79, 70, 229, 0.3);
+            transition: all 0.3s;
         }
         .cta-btn:hover {
-            transform: translateY(-10px);
-            background: #5a67d8;
-            color: white;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(79, 70, 229, 0.4);
         }
+
+        /* Tutors Section */
+        .tutors-section {
+            padding: 120px 5%;
+            background: white;
+            text-align: center;
+        }
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 4rem;
+        }
+        .tutors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .tutor-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.4s;
+            border: 1px solid var(--border);
+        }
+        .tutor-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+        .tutor-card img {
+            width: 100%;
+            height: 340px;
+            object-fit: cover;
+        }
+        .tutor-info {
+            padding: 1.8rem;
+        }
+        .tutor-info h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        .tutor-info p {
+            color: var(--gray);
+            font-size: 1.05rem;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            padding: 120px 5%;
+            background: #f8fafc;
+            text-align: center;
+        }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 4rem auto 0;
+        }
+        .price-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border: 1px solid var(--border);
+            transition: all 0.4s;
+        }
+        .price-card:hover { transform: translateY(-10px); }
+        .price-card.popular {
+            border: 2px solid var(--primary);
+            transform: scale(1.05);
+            position: relative;
+        }
+        .price-card.popular::before {
+            content: "MOST POPULAR";
+            position: absolute;
+            top: -12px; left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+        .price-card h3 { font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem; }
+        .price { font-size: 4rem; font-weight: 800; color: var(--primary); margin: 1.5rem 0; }
+        .price small { font-size: 1.1rem; color: var(--gray); }
+        .price-card ul { list-style: none; margin: 2rem 0; text-align: left; }
+        .price-card ul li {
+            margin: 1rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: #374151;
+        }
+        .price-card ul li::before {
+            content: "✓";
+            color: #10b981;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        .price-btn {
+            display: block;
+            background: var(--primary);
+            color: white;
+            padding: 1rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 2rem;
+            transition: all 0.3s;
+        }
+        .price-btn:hover {
+            background: #4338ca;
+            transform: translateY(-3px);
+        }
+
         footer {
             text-align: center;
-            padding: 2.5rem;
-            background: rgba(0,0,0,0.2);
+            padding: 3rem;
+            background: var(--dark);
             color: white;
-            margin-top: 8rem;
             font-size: 0.95rem;
         }
 
-        /* Animations */
-        @keyframes slideInLeft { from { opacity:0; transform:translateX(-100px); } to { opacity:1; transform:translateX(0); } }
-        @keyframes slideInRight { from { opacity:0; transform:translateX(100px); } to { opacity:1; transform:translateX(0); } }
-        @keyframes bounceIn {
-            0% { opacity:0; transform:scale(0.3); }
-            50% { opacity:1; transform:scale(1.1); }
-            70% { transform:scale(0.9); }
-            100% { transform:scale(1); }
-        }
-
         @media (max-width: 768px) {
-            .home-container h1 { font-size: 3.2rem; }
-            .home-container p { font-size: 1.2rem; }
-            .navbar { flex-direction: column; padding: 1rem; }
-            .nav-links { margin-top: 1rem; gap: 1.5rem; }
+            .hero h1 { font-size: 3rem; }
+            .section-title { font-size: 2.4rem; }
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
+
     <header>
         <nav class="navbar">
             <div class="logo">E-Learning Hub</div>
             <ul class="nav-links">
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="courses.html">Courses</a></li>
+                <li><a href="about.html">About Us</a></li>
             </ul>
         </nav>
     </header>
 
-    <main class="home-container">
-        <h1>Welcome to E-Learning Hub</h1>
-        <p>Learn programming at your own pace with high-quality video lectures, interactive quizzes, and downloadable notes.</p>
+    <section class="hero">
+        <h1>Learn from Industry Experts</h1>
+        <p>Master programming with structured courses, live mentorship, and real-world projects.</p>
         <a href="courses.html" class="cta-btn">Explore Courses</a>
-    </main>
+    </section>
+
+    <!-- 4 Expert Tutors Only -->
+    <section class="tutors-section">
+        <h2 class="section-title">Meet Your Expert Instructors</h2>
+        <div class="tutors-grid">
+            <div class="tutor-card">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80" alt="Dr. Sarah Johnson">
+                <div class="tutor-info">
+                    <h3>Dr. Sarah Johnson</h3>
+                    <p>Python | ML | Ex-Google</p>
+                </div>
+            </div>
+            <div class="tutor-card">
+                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&q=80" alt="Michael Chen">
+                <div class="tutor-info">
+                    <h3>Michael Chen</h3>
+                    <p>Java | System Design | Ex-Meta</p>
+                </div>
+            </div>
+            <div class="tutor-card">
+                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=80" alt="Emma Williams">
+                <div class="tutor-info">
+                    <h3>Emma Williams</h3>
+                    <p>React.js | TypeScript | UI/UX Expert</p>
+                </div>
+            </div>
+            <div class="tutor-card">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80" alt="Raj Patel">
+                <div class="tutor-info">
+                    <h3>Raj Patel</h3>
+                    <p>C++ | Competitive Programming</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section – Clean checkmarks only -->
+    <section class="pricing-section">
+        <h2 class="section-title">Choose Your Plan</h2>
+        <div class="pricing-grid">
+            <div class="price-card">
+                <h3>Monthly</h3>
+                <div class="price">₹1000<small>/month</small></div>
+                <ul>
+                    <li>Full access to all courses</li>
+                    <li>Weekly live sessions</li>
+                    <li>Downloadable resources</li>
+                    <li>Completion certificates</li>
+                </ul>
+                <a href="#" class="price-btn">Start Learning</a>
+            </div>
+            <div class="price-card popular">
+                <h3>6 Months</h3>
+                <div class="price">₹3000<small> (₹500/month)</small></div>
+                <ul>
+                    <li>Everything in Monthly</li>
+                    <li>Save 50% annually</li>
+                    <li>2 one-on-one mentorship calls</li>
+                    <li>Priority support</li>
+                    <li>Exclusive projects</li>
+                </ul>
+                <a href="#" class="price-btn">Best Value</a>
+            </div>
+            <div class="price-card">
+                <h3>Yearly</h3>
+                <div class="price">₹2000<small> (₹166/month)</small></div>
+                <ul>
+                    <li>Everything in 6-Month plan</li>
+                    <li>Save 83% – Best deal!</li>
+                    <li>Unlimited mentorship</li>
+                    <li>Early access to new courses</li>
+                    <li>Lifetime updates</li>
+                </ul>
+                <a href="#" class="price-btn">Go Yearly</a>
+            </div>
+        </div>
+    </section>
 
     <footer>
         <p>© 2025 E-Learning Hub. All rights reserved.</p>
