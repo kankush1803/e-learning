@@ -91,10 +91,11 @@
         .hero {
             text-align: center;
             padding: 220px 5% 140px;
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
         .hero h1 { font-size: 4.5rem; font-weight: 800; margin-bottom: 1.5rem; }
-        .hero p { font-size: 1.4rem; color: var(--gray); max-width: 750px; margin: 0 auto 2.5rem; }
+        
+        .hero p { font-size: 1.4rem; color: white; max-width: 750px; margin: 0 auto 2.5rem; }
         .cta-btn { 
             display: inline-block; background: var(--primary); color: white;
             padding: 1.2rem 3rem; border-radius: 12px; font-size: 1.3rem; font-weight: 700;
@@ -255,6 +256,76 @@
             font-weight: 700;
             cursor: pointer;
         }
+       
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(60px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInFromTop {
+            from { opacity: 0; transform: translateY(-80px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInFromBottom {
+            from { opacity: 0; transform: translateY(80px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.6); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .hero {
+            animation: fadeIn 1.2s ease-out;
+        }
+        .hero h1 {
+            animation: slideInFromTop 1s ease-out;
+        }
+        .hero p {
+            animation: slideInFromBottom 1s ease-out 0.3s both;
+        }
+        .hero .cta-btn {
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+        .category-card {
+            animation: fadeInUp 0.8s ease-out both;
+        }
+        .category-card:nth-child(1) { animation-delay: 0.1s; }
+        .category-card:nth-child(2) { animation-delay: 0.2s; }
+        .category-card:nth-child(3) { animation-delay: 0.3s; }
+        .category-card:nth-child(4) { animation-delay: 0.4s; }
+        .category-card:nth-child(5) { animation-delay: 0.5s; }
+        .category-card:nth-child(6) { animation-delay: 0.6s; }
+        .course-card {
+            animation: scaleIn 0.8s ease-out both;
+        }
+        .course-card:nth-child(1) { animation-delay: 0.2s; }
+        .course-card:nth-child(2) { animation-delay: 0.4s; }
+        .course-card:nth-child(3) { animation-delay: 0.6s; }
+        .why-item {
+            animation: fadeInUp 0.9s ease-out both;
+        }
+        .why-item:nth-child(1) { animation-delay: 0.1s; }
+        .why-item:nth-child(2) { animation-delay: 0.2s; }
+        .why-item:nth-child(3) { animation-delay: 0.3s; }
+        .why-item:nth-child(4) { animation-delay: 0.4s; }
+        .achievements-grid div {
+            animation: scaleIn 0.9s ease-out both;
+        }
+        .achievements-grid div:nth-child(1) { animation-delay: 0.1s; }
+        .achievements-grid div:nth-child(2) { animation-delay: 0.2s; }
+        .achievements-grid div:nth-child(3) { animation-delay: 0.3s; }
+        .achievements-grid div:nth-child(4) { animation-delay: 0.4s; }
+        .newsletter {
+            animation: fadeInUp 1s ease-out;
+        }
+
 
         footer { padding: 3rem; background: var(--dark); color: white; text-align: center; }
 
