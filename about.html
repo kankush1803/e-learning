@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Learning Platform</title>
+    <style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f8f9fa;
+    color: #333;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+.navbar {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1rem 5%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #5a67d8;
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #4a5568;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #5a67d8;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background: #5a67d8;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+
+.about-hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 160px 5% 100px;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 1s ease-out;
+}
+
+.about-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+    background-size: cover;
+    opacity: 0.3;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.about-hero h1 {
+    font-size: 4.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    animation: slideInFromTop 1s ease-out;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    opacity: 0.95;
+    animation: slideInFromBottom 1s ease-out 0.3s both;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.mission-section {
+    padding: 100px 0;
+    background: white;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.mission-section h2 {
+    text-align: center;
+    font-size: 3rem;
+    color: #1a202c;
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+
+.mission-text {
+    font-size: 1.25rem;
+    line-height: 2;
+    color: #4a5568;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: #f7fafc;
+    border-radius: 20px;
+    border-left: 5px solid #5a67d8;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+
+.values-section {
+    padding: 100px 0;
+    background: #f8f9fa;
+}
+
+.values-section h2 {
+    text-align: center;
+    font-size: 3rem;
+    color: #1a202c;
+    margin-bottom: 4rem;
+    font-weight: 700;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.value-card {
+    background: white;
+    padding: 3rem 2rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+    animation: fadeInUp 0.8s ease-out both;
+}
+
+.value-card:nth-child(1) { animation-delay: 0.1s; }
+.value-card:nth-child(2) { animation-delay: 0.2s; }
+.value-card:nth-child(3) { animation-delay: 0.3s; }
+.value-card:nth-child(4) { animation-delay: 0.4s; }
+
+.value-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 25px 50px rgba(90, 103, 216, 0.2);
+}
+
+.value-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+}
+
+.value-card h3 {
+    font-size: 1.8rem;
+    color: #1a202c;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.value-card p {
+    font-size: 1.1rem;
+    color: #718096;
+    line-height: 1.8;
+}
+
+
+.story-section {
+    padding: 100px 0;
+    background: white;
+}
+
+.story-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.story-text h2 {
+    font-size: 3rem;
+    color: #1a202c;
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+
+.story-text p {
+    font-size: 1.15rem;
+    color: #4a5568;
+    line-height: 1.9;
+    margin-bottom: 1.5rem;
+}
+
+.story-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.stat-item {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 2.5rem;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
+    transition: all 0.4s ease;
+    animation: scaleIn 0.8s ease-out both;
+}
+
+.stat-item:nth-child(1) { animation-delay: 0.1s; }
+.stat-item:nth-child(2) { animation-delay: 0.2s; }
+.stat-item:nth-child(3) { animation-delay: 0.3s; }
+.stat-item:nth-child(4) { animation-delay: 0.4s; }
+
+.stat-item:hover {
+    transform: scale(1.05) translateY(-10px);
+    box-shadow: 0 20px 45px rgba(102, 126, 234, 0.4);
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 1.1rem;
+    opacity: 0.95;
+}
+
+
+.team-section {
+    padding: 100px 0;
+    background: #f8f9fa;
+}
+
+.team-section h2 {
+    text-align: center;
+    font-size: 3rem;
+    color: #1a202c;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 1.3rem;
+    color: #718096;
+    margin-bottom: 4rem;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.team-card {
+    background: white;
+    padding: 3rem 2rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+    animation: fadeInUp 0.8s ease-out both;
+}
+
+.team-card:nth-child(1) { animation-delay: 0.1s; }
+.team-card:nth-child(2) { animation-delay: 0.2s; }
+.team-card:nth-child(3) { animation-delay: 0.3s; }
+.team-card:nth-child(4) { animation-delay: 0.4s; }
+
+.team-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 25px 50px rgba(90, 103, 216, 0.2);
+}
+
+.team-avatar {
+    font-size: 5rem;
+    margin-bottom: 1.5rem;
+}
+
+.team-card h3 {
+    font-size: 1.8rem;
+    color: #1a202c;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.team-role {
+    font-size: 1.1rem;
+    color: #5a67d8;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.team-bio {
+    font-size: 1rem;
+    color: #718096;
+    line-height: 1.7;
+}
+
+
+.cta-section {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    text-align: center;
+    color: white;
+}
+
+.cta-section h2 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.cta-section p {
+    font-size: 1.4rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.95;
+}
+
+.cta-btn {
+    display: inline-block;
+    background: white;
+    color: #5a67d8;
+    padding: 1.2rem 3rem;
+    border-radius: 50px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+}
+
+.cta-btn:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+    background: #f7fafc;
+}
+
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    background: #2d3748;
+    color: white;
+    font-size: 0.9rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInFromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+@media (max-width: 968px) {
+    .story-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .story-stats {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .nav-links {
+        margin-top: 1rem;
+        gap: 1.5rem;
+    }
+
+    .about-hero {
+        padding: 120px 4% 80px;
+    }
+
+    .about-hero h1 {
+        font-size: 3rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .mission-section h2,
+    .values-section h2,
+    .story-text h2,
+    .team-section h2 {
+        font-size: 2.5rem;
+    }
+
+    .mission-text {
+        font-size: 1.1rem;
+        padding: 1.5rem;
+    }
+
+    .values-grid,
+    .team-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .story-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .cta-section h2 {
+        font-size: 2.5rem;
+    }
+
+    .cta-section p {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .mission-section h2,
+    .values-section h2,
+    .story-text h2,
+    .team-section h2 {
+        font-size: 2rem;
+    }
+
+    .value-card,
+    .team-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .cta-section h2 {
+        font-size: 2rem;
+    }
+
+    .cta-btn {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">LearnHub</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="about-hero">
+            <div class="hero-content">
+                <h1>About Us</h1>
+                <p class="hero-subtitle">Empowering learners worldwide with quality education</p>
+            </div>
+        </section>
+
+
+        <section class="mission-section">
+            <div class="container">
+                <h2>Our Mission</h2>
+                <p class="mission-text">
+                    We believe that education is the key to unlocking human potential. Our mission is to provide accessible, 
+                    high-quality learning experiences that empower individuals to achieve their goals and transform their lives. 
+                    Through innovative technology and expert instructors, we're breaking down barriers to education and creating 
+                    opportunities for learners everywhere.
+                </p>
+            </div>
+        </section>
+
+
+        <section class="values-section">
+            <div class="container">
+                <h2>Our Core Values</h2>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon">🎯</div>
+                        <h3>Excellence</h3>
+                        <p>We are committed to delivering the highest quality educational content and learning experiences.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🌍</div>
+                        <h3>Accessibility</h3>
+                        <p>Education should be available to everyone, regardless of location or background.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">💡</div>
+                        <h3>Innovation</h3>
+                        <p>We continuously evolve our platform using the latest technology to enhance learning.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🤝</div>
+                        <h3>Community</h3>
+                        <p>We foster a supportive environment where learners can grow together and help each other succeed.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="story-section">
+            <div class="container">
+                <div class="story-content">
+                    <div class="story-text">
+                        <h2>Our Story</h2>
+                        <p>
+                            Founded with a vision to democratize education, our platform started as a small project to help 
+                            students access quality learning materials. What began as a simple idea has grown into a 
+                            comprehensive learning ecosystem serving thousands of students worldwide.
+                        </p>
+                        <p>
+                            Today, we partner with industry experts and experienced educators to create courses that are not 
+                            only informative but also engaging and practical. Our students have gone on to achieve remarkable 
+                            success in their careers, and their stories continue to inspire us every day.
+                        </p>
+                        <p>
+                            As we look to the future, we remain committed to our founding principles: make education accessible, 
+                            engaging, and effective for everyone who seeks to learn.
+                        </p>
+                    </div>
+                    <div class="story-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">10,000+</div>
+                            <div class="stat-label">Active Students</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Expert Instructors</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">1,000+</div>
+                            <div class="stat-label">Course Hours</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">95%</div>
+                            <div class="stat-label">Satisfaction Rate</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="team-section">
+            <div class="container">
+                <h2>Meet Our Team</h2>
+                <p class="section-subtitle">Dedicated professionals passionate about education</p>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="team-avatar">👨‍💼</div>
+                        <h3>John Anderson</h3>
+                        <p class="team-role">Chief Executive Officer</p>
+                        <p class="team-bio">Visionary leader with 15+ years in educational technology and a passion for transforming learning experiences.</p>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-avatar">👩‍🏫</div>
+                        <h3>Sarah Mitchell</h3>
+                        <p class="team-role">Head of Curriculum</p>
+                        <p class="team-bio">Former university professor dedicated to creating engaging and effective learning content for all skill levels.</p>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-avatar">👨‍💻</div>
+                        <h3>Michael Chen</h3>
+                        <p class="team-role">Chief Technology Officer</p>
+                        <p class="team-bio">Tech innovator building cutting-edge platforms that make learning seamless and enjoyable.</p>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-avatar">👩‍🎨</div>
+                        <h3>Emily Rodriguez</h3>
+                        <p class="team-role">Creative Director</p>
+                        <p class="team-bio">Design expert crafting beautiful, intuitive interfaces that enhance the learning journey.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="cta-section">
+            <div class="container">
+                <h2>Ready to Start Learning?</h2>
+                <p>Join thousands of students already transforming their careers</p>
+                <a href="courses.html" class="cta-btn">Explore Courses</a>
+            </div>
+        </section>
+    </main>
+
+    
+    <footer>
+        <p>&copy; 2025 LearnHub. All rights reserved. | Empowering Education Worldwide</p>
+    </footer>
+</body>
+</html>
