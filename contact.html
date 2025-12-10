@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - E-Learning Hub</title>
+    <link rel="stylesheet" href="contact.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+:root {
+    --primary: #4f46e5;
+    --dark: #111827;
+    --gray: #6b7280;
+    --light: #f9fafb;
+    --border: #e5e7eb;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background: #ffffff;
+    color: var(--dark);
+    line-height: 1.7;
+}
+
+
+.navbar {
+    background: white;
+    padding: 1rem 5%;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+}
+.logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--primary);
+}
+.nav-center {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+}
+.nav-center a {
+    text-decoration: none;
+    color: #374151;
+    font-weight: 600;
+    position: relative;
+}
+.nav-center a:hover, .nav-center a.active { color: var(--primary); }
+.nav-center a::after {
+    content: ''; position: absolute; width: 0; height: 2.5px;
+    background: var(--primary); bottom: -8px; left: 50%;
+    transform: translateX(-50%); transition: width 0.3s;
+}
+.nav-center a:hover::after, .nav-center a.active::after { width: 100%; }
+
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background: #f3f4f6;
+    border-radius: 50px;
+    padding: 0.5rem 1rem;
+    border: 1.5px solid #d1d5db;
+}
+.search-box input {
+    border: none; background: none; outline: none;
+    padding: 0 0.8rem; font-size: 1rem; width: 180px;
+}
+.search-icon { color: #6b7280; font-size: 1.3rem; }
+
+
+.auth-buttons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+.btn-login {
+    padding: 0.6rem 1.4rem;
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+.btn-login:hover { background: var(--primary); color: white; }
+.btn-signup {
+    padding: 0.6rem 1.6rem;
+    background: var(--primary);
+    color: white;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+.btn-signup:hover { background: #4338ca; }
+
+
+footer { padding: 3rem; background: var(--dark); color: white; text-align: center; }
+
+@media (max-width: 992px) {
+    .nav-center { gap: 1.5rem; }
+    .search-box input { width: 120px; }
+}
+@media (max-width: 768px) {
+    .navbar { flex-wrap: wrap; padding: 1rem 5%; }
+    .nav-center, .auth-buttons { order: 3; width: 100%; justify-content: center; margin-top: 1rem; }
+}
+
+
+.contact-hero {
+    text-align: center;
+    padding: 160px 5% 80px; 
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-bottom: 1px solid var(--border);
+}
+.contact-hero h1 { 
+    font-size: 3.5rem; 
+    font-weight: 800; 
+    margin-bottom: 1rem;
+    color: var(--dark);
+}
+.contact-hero p { 
+    font-size: 1.2rem; 
+    color: var(--gray); 
+    max-width: 600px; 
+    margin: 0 auto; 
+}
+
+.contact-main {
+    padding: 80px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.contact-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+}
+
+
+.contact-form-container h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    color: var(--primary);
+}
+.form-group {
+    margin-bottom: 1.5rem;
+}
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #374151;
+}
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 1rem;
+    background: #f9fafb;
+    transition: border-color 0.3s;
+    font-family: inherit;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+    background: white;
+}
+.submit-btn {
+    display: inline-block; 
+    background: var(--primary); 
+    color: white;
+    padding: 1rem 2.5rem; 
+    border-radius: 8px; 
+    font-size: 1.1rem; 
+    font-weight: 700;
+    text-decoration: none; 
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+.submit-btn:hover { 
+    background: #4338ca; 
+    transform: translateY(-2px);
+}
+
+.contact-info-container {
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+}
+.contact-info-container h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--dark);
+}
+.info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+.info-icon {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-right: 1rem;
+}
+.info-item p {
+    margin: 0;
+    color: #374151;
+    font-weight: 600;
+}
+
+.social-links {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+}
+.social-links h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+.social-links a img {
+    height: 30px;
+    margin-right: 1.5rem;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+.social-links a img:hover {
+    opacity: 1;
+}
+
+
+@media (max-width: 1024px) {
+    .contact-grid {
+        grid-template-columns: 1fr; 
+    }
+    .contact-form-container, .contact-info-container {
+        padding: 0;
+    }
+    .contact-info-container {
+        margin-top: 2rem;
+        padding: 2rem;
+    }
+}
+@media (max-width: 600px) {
+    .contact-hero h1 {
+        font-size: 2.5rem;
+    }
+    .contact-main {
+        padding: 40px 5%;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">E-Learning Hub</div>
+
+            <div class="nav-center">
+                <a href="index.html">Home</a>
+                <a href="courses.html">Courses</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html" class="active">Contact Us</a>
+
+                <div class="search-box">
+                    <span class="material-icons search-icon">search</span>
+                    <input type="text" placeholder="Search courses...">
+                </div>
+            </div>
+
+            <div class="auth-buttons">
+                <a href="#" class="btn-login">Login</a>
+                <a href="#" class="btn-signup">Sign Up</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="contact-hero">
+        <h1>Get in Touch</h1>
+        <p>We're here to help you on your coding journey. Fill out the form or reach us directly.</p>
+    </section>
+
+    <section class="contact-main">
+        <div class="contact-grid">
+            
+            <div class="contact-form-container">
+                <h2>Send Us a Message</h2>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="6" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+
+            <div class="contact-info-container">
+                <h2>Our Contact Details</h2>
+                <div class="info-item">
+                    <span class="material-icons info-icon">email</span>
+                    <p>support@elearninghub.com</p>
+                </div>
+                <div class="info-item">
+                    <span class="material-icons info-icon">phone</span>
+                    <p>+91 98765 12XXX</p>
+                </div>
+                <div class="info-item">
+                    <span class="material-icons info-icon">location_on</span>
+                    <p>Lohehaon, Pune</p>
+                </div>
+
+                <div class="social-links">
+                    <h3>Follow Us</h3>
+                    <a href="#" aria-label="LinkedIn"><img src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" alt="LinkedIn"></a>
+                    <a href="#" aria-label="Twitter"><img src="https://cdn.worldvectorlogo.com/logos/twitter-3.svg" alt="Twitter"></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 E-Learning Hub. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
