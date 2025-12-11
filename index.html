@@ -262,9 +262,25 @@
             to { opacity: 1; }
         }
 
+ 
+        /* Pricing Section - Checkmarks Completely Removed */
+        .pricing-section { padding: 120px 5%; background: white; text-align: center; }
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; max-width: 1200px; margin: 4rem auto 0; }
+        .price-card { background: white; border-radius: 20px; padding: 3rem 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid var(--border); transition: all 0.4s; }
+        .price-card:hover { transform: translateY(-10px); }
+        .price-card.popular { border: 2px solid var(--primary); position: relative; }
+        .price-card.popular::before { content: "MOST POPULAR"; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 0.4rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; }
+        .price { font-size: 4rem; font-weight: 800; color: var(--primary); }
+        .price small { font-size: 1.1rem; color: var(--gray); }
+        .price-card ul { list-style: none; margin: 2rem 0; text-align: left; }
+        .price-card ul li { 
+            margin: 1rem 0; 
+            padding-left: 0;   
+            color: #374151;
+            font-size: 1.05rem;
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(60px); }
-            to { opacity: 1; transform: translateY(0); }
+            to { opacity: 1; transform: translateY(0); } main
         }
 
         @keyframes slideInFromTop {
@@ -364,8 +380,8 @@
             </div>
 
             <div class="auth-buttons">
-                <a href="#" class="btn-login">Login</a>
-                <a href="#" class="btn-signup">Sign Up</a>
+                <a href="./login.html" class="btn-login">Login</a>
+                <a href="./signup.html" class="btn-signup">Sign Up</a>
             </div>
         </nav>
     </header>
