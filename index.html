@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-Learning Hub - Learn from the Best</title>
+
     <style>
         :root {
             --primary: #FF5757; 
@@ -18,7 +19,9 @@
             --light-bg: #1A1A1A; 
             --success: #34d399;
         }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
             font-family: 'Inter', 'Segoe UI', sans-serif;
             background: var(--dark);
@@ -81,6 +84,108 @@
 .search-icon { color: var(--gray); font-size: 1.3rem; }
 
 
+        /* Navbar */
+        .navbar {
+            background: white;
+            padding: 1rem 5%;
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .nav-center {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .nav-center a {
+            text-decoration: none;
+            color: #374151;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .nav-center a:hover,
+        .nav-center a.active {
+            color: var(--primary);
+        }
+
+        .nav-center a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2.5px;
+            background: var(--primary);
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: width 0.3s;
+        }
+
+        .nav-center a:hover::after,
+        .nav-center a.active::after {
+            width: 100%;
+        }
+
+        /* Search */
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: #f3f4f6;
+            border-radius: 50px;
+            padding: 0.5rem 1rem;
+            border: 1.5px solid #d1d5db;
+        }
+
+        .search-box input {
+            border: none;
+            background: none;
+            outline: none;
+            padding: 0 0.8rem;
+            font-size: 1rem;
+            width: 180px;
+        }
+
+        .search-icon {
+            color: #6b7280;
+            font-size: 1.3rem;
+        }
+
+        .auth-buttons { display: flex; gap: 1rem; }
+
+        .btn-login,
+        .btn-signup {
+            padding: 0.6rem 1.6rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn-login {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-login:hover { background: var(--primary); color: white; }
+
+        .btn-signup { background: var(--primary); color: white; }
+
+        .btn-signup:hover { background: #4338ca; }
+
+
 .auth-buttons {
     display: flex;
     gap: 1rem;
@@ -111,6 +216,7 @@
         .hero {
             text-align: center;
             padding: 220px 5% 140px;
+
             background: var(--dark);
         }
         .hero h1 { font-size: 4.5rem; font-weight: 800; margin-bottom: 1.5rem; color: var(--text-light); }
@@ -125,10 +231,52 @@
             font-weight: 700;
             text-decoration: none;
             box-shadow: 0 12px 35px rgba(255, 87, 87, 0.3);
-            transition: all 0.3s;
+
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            animation: fadeIn 1.2s ease-out;
         }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: white;
+            animation: slideInFromTop 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: white;
+            max-width: 750px;
+            margin: 0 auto 2.5rem;
+            animation: slideInFromBottom 1s ease-out 0.3s both;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 12px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 12px 35px rgba(79,70,229,0.3);
+
+            transition: all 0.3s;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
         .cta-btn:hover { transform: translateY(-6px); background: #FF3838; box-shadow: 0 20px 50px var(--primary); }
 
+
+
+        .cta-btn:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(79,70,229,0.4);
+        }
+
+        /* Floating Counter */
         .live-counter {
             position: fixed;
             bottom: 20px;
@@ -145,10 +293,17 @@
             gap: 0.5rem;
             animation: pulse 2s infinite;
         }
+
         .live-counter::before {
             content: '';
+
             width: 10px; height: 10px;
             background: var(--secondary);
+
+            width: 10px;
+            height: 10px;
+            background: #34d399;
+
             border-radius: 50%;
             animation: blink 1.5s infinite;
         }
@@ -158,6 +313,7 @@
             background: var(--light-bg);
             text-align: center;
         }
+
         .categories-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -165,12 +321,14 @@
             max-width: 1200px;
             margin: 3rem auto 0;
         }
+
         .category-card {
             padding: 2rem 1rem;
             background: var(--card-bg-float);
             backdrop-filter: blur(8px);
             border-radius: 16px;
             transition: all 0.3s;
+
             border: 1px solid var(--border-float);
         }
         .category-card:hover {
@@ -183,16 +341,22 @@
         .category-card i { color: var(--primary); }
         .category-card:hover i { color: var(--text-dark); }
 
+            animation: fadeInUp 0.8s ease-out both;
+        }
+
+
         .featured {
             padding: 120px 5%;
             background: var(--dark);
             text-align: center;
         }
+
         .section-title {
             font-size: 3rem;
             font-weight: 800;
             margin-bottom: 4rem;
         }
+
         .featured-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -200,6 +364,7 @@
             max-width: 1300px;
             margin: 0 auto;
         }
+
         .course-card {
             background: var(--card-bg-float);
             backdrop-filter: blur(8px);
@@ -207,9 +372,15 @@
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             transition: all 0.4s;
+
             border: 1px solid var(--border-float);
+
+            animation: scaleIn 0.8s ease-out both;
+
         }
+
         .course-card:hover { transform: translateY(-12px); }
+
         .course-img { filter: brightness(0.8); width: 100%; height: 200px; object-fit: cover; }
         .course-info { padding: 1.5rem; text-align: left; }
         .course-info h3 { font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--text-light);}
@@ -331,6 +502,28 @@
             to { opacity: 1; transform: translateY(0); } main
         }}
 
+
+        .course-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .course-info { padding: 1.5rem; text-align: left; }
+
+        .rating { color: #f59e0b; margin: 0.5rem 0; }
+
+        .price { font-size: 1.4rem; font-weight: 700; color: var(--primary); }
+
+        /* Animations */
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(60px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+
         @keyframes slideInFromTop {
             from { opacity: 0; transform: translateY(-80px); }
             to { opacity: 1; transform: translateY(0); }
@@ -345,49 +538,11 @@
             from { opacity: 0; transform: scale(0.6); }
             to { opacity: 1; transform: scale(1); }
         }
-        .hero {
-            animation: fadeIn 1.2s ease-out;
-        }
-        .hero h1 {
-            animation: slideInFromTop 1s ease-out;
-        }
-        .hero p {
-            animation: slideInFromBottom 1s ease-out 0.3s both;
-        }
-        .hero .cta-btn {
-            animation: fadeInUp 1s ease-out 0.6s both;
-        }
-        .category-card {
-            animation: fadeInUp 0.8s ease-out both;
-        }
-        .category-card:nth-child(1) { animation-delay: 0.1s; }
-        .category-card:nth-child(2) { animation-delay: 0.2s; }
-        .category-card:nth-child(3) { animation-delay: 0.3s; }
-        .category-card:nth-child(4) { animation-delay: 0.4s; }
-        .category-card:nth-child(5) { animation-delay: 0.5s; }
-        .category-card:nth-child(6) { animation-delay: 0.6s; }
-        .course-card {
-            animation: scaleIn 0.8s ease-out both;
-        }
-        .course-card:nth-child(1) { animation-delay: 0.2s; }
-        .course-card:nth-child(2) { animation-delay: 0.4s; }
-        .course-card:nth-child(3) { animation-delay: 0.6s; }
-        .why-item {
-            animation: fadeInUp 0.9s ease-out both;
-        }
-        .why-item:nth-child(1) { animation-delay: 0.1s; }
-        .why-item:nth-child(2) { animation-delay: 0.2s; }
-        .why-item:nth-child(3) { animation-delay: 0.3s; }
-        .why-item:nth-child(4) { animation-delay: 0.4s; }
-        .achievements-grid div {
-            animation: scaleIn 0.9s ease-out both;
-        }
-        .achievements-grid div:nth-child(1) { animation-delay: 0.1s; }
-        .achievements-grid div:nth-child(2) { animation-delay: 0.2s; }
-        .achievements-grid div:nth-child(3) { animation-delay: 0.3s; }
-        .achievements-grid div:nth-child(4) { animation-delay: 0.4s; }
-        .newsletter {
-            animation: fadeInUp 1s ease-out;
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(79,70,229,0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(79,70,229,0); }
+            100% { box-shadow: 0 0 0 0 rgba(79,70,229,0); }
         }
 
 
@@ -397,35 +552,50 @@
         @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255, 87, 87, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(255, 87, 87, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 87, 87, 0); } }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+
         @media (max-width: 768px) {
             .hero h1 { font-size: 3.5rem; }
             .section-title { font-size: 2.4rem; }
-            .newsletter-form { flex-direction: column; }
         }
     </style>
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
-<body>
+
 
 
     <header>
         <nav class="navbar">
             <div class="logo">E-Learning Hub</div>
 
-            <div class="nav-center">
-                <a href="index.html" class="active">Home</a>
-                <a href="courses.html">Courses</a>
-                <a href="about.html">About Us</a>
-                <a href="contact.html">Contact Us</a>
+<body>
 
 
-                <div class="search-box">
-                    <span class="material-icons search-icon">search</span>
-                    <input type="text" placeholder="Search courses...">
-                </div>
+<!-- Navbar -->
+<header>
+    <nav class="navbar">
+        <div class="logo">E-Learning Hub</div>
+
+        <div class="nav-center">
+            <a href="index.html" class="active">Home</a>
+            <a href="courses.html">Courses</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+
+            <div class="search-box">
+                <span class="material-icons search-icon">search</span>
+                <input type="text" placeholder="Search courses...">
             </div>
+        </div>
+
 
             <div class="auth-buttons">
                 <a href="./login.html" class="btn-login">Login</a>
@@ -568,6 +738,68 @@
     <footer>
         <p>© 2025 E-Learning Hub. All rights reserved.</p>
     </footer>
+
+        <div class="auth-buttons">
+            <a href="./login.html" class="btn-login">Login</a>
+            <a href="./signup.html" class="btn-signup">Sign Up</a>
+        </div>
+    </nav>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+    <h1>Learn from Industry Experts</h1>
+    <p>Master programming with structured courses, live mentorship, and real-world projects.</p>
+    <a href="courses.html" class="cta-btn">Explore Courses</a>
+</section>
+
+<!-- Floating Counter -->
+<div class="live-counter">
+    3,247 students learning now
+</div>
+
+<!-- Categories -->
+<section class="categories">
+    <h2 class="section-title">Browse by Category</h2>
+
+    <div class="categories-grid">
+        <div class="category-card">
+            <i class="fas fa-laptop-code fa-3x"></i>
+            <h3>Web Development</h3>
+        </div>
+
+        <div class="category-card">
+            <i class="fas fa-brain fa-3x"></i>
+            <h3>Data Science & AI</h3>
+        </div>
+
+        <div class="category-card">
+            <i class="fas fa-mobile-alt fa-3x"></i>
+            <h3>Mobile Development</h3>
+        </div>
+
+        <div class="category-card">
+            <i class="fas fa-gamepad fa-3x"></i>
+            <h3>Game Development</h3>
+        </div>
+
+        <div class="category-card">
+            <i class="fas fa-shield-alt fa-3x"></i>
+            <h3>Cybersecurity</h3>
+        </div>
+
+        <div class="category-card">
+            <i class="fas fa-cloud fa-3x"></i>
+            <h3>Cloud Computing</h3>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>© 2025 E-Learning Hub. All rights reserved.</p>
+</footer>
+
 
 </body>
 </html>
