@@ -10,21 +10,38 @@
 <body>
     <header>
         <nav class="navbar">
-            <div class="logo">E-Learning</div>
-            <ul class="nav-links">
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="../courses.html">Courses</a></li>
-                <li><a href="../about.html">About</a></li>
-            </ul>
+            <div class="logo">E-Learning Hub</div>
+
+            <div class="nav-center">
+                <a href="../index.html">Home</a>
+                <a href="../courses.html" class="active">Courses</a>
+                <a href="../about.html">About Us</a>
+                <a href="../contact.html">Contact Us</a>
+
+                <div class="search-box">
+                    <span class="material-icons search-icon">search</span>
+                    <input type="text" placeholder="Search courses...">
+                </div>
+            </div>
+
+            <div class="auth-buttons">
+                <a href="./login.html" class="btn-login">Login</a>
+                <a href="./signup.html" class="btn-signup">Sign Up</a>
+            </div>
         </nav>
     </header>
     <main class="lecture-page">
         <h1>Introduction to React</h1>
         <div class="video-section">
-            <video controls>
-                <source src="../assets/videos/react-intro.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+            <iframe
+                width="100%"
+                height="450"
+                src="https://www.youtube.com/embed/S2P_7_81d0k" 
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                title="Introduction to Python Programming"
+            ></iframe>
         </div>
         <div class="notes-section">
             <h2>Lecture Notes</h2>
