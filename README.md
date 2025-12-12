@@ -73,18 +73,40 @@ git clone https://github.com/kankush1803/e-learning
 🗂️ Project Structure
 
 e-learning/
-│── index.html
-│── about/
-│     └── about.html
-│── courses/
-│     ├── python.html
-│     ├── java.html
-│     ├── react.html
-│     └── html.html
-│── assets/
-│     ├── css/
-│     │     └── style.css
-│     ├── images/
-│     └── icons/
+│
+├── index.html
+├── about.html
+├── contact.html
+├── courses.html
+├── login.html
+├── signup.html
+├── forgotpass.html
+│
+├── courses/
+│   ├── python.html
+│   ├── java.html
+│   ├── react.html
+│   └── cpp.html
+│
+├── lectures/
+│   ├── cpp-intro.html
+│   ├── cpp-advanced.html
+│   ├── java-intro.html
+│   ├── java-advanced.html
+│   ├── python-intro.html
+│   ├── python-advanced.html
+│   ├── react-intro.html
+│   └── react-advanced.html
+│
+├── assets/
+│   ├── css/
+│   │   └── style.css
+│   │
+│   ├── images/
+│   │   └── (all images used in the website)
+│   │
+│   └── icons/
+│       └── (SVG / PNG icons)
+│
 └── README.md
 
