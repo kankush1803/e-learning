@@ -6,35 +6,41 @@
     <title>Courses - E-Learning Hub</title>
     <style>
         :root {
-            --primary: #4f46e5;
-            --dark: #111827;
-            --light: #f9fafb;
-            --gray: #6b7280;
-            --border: #e5e7eb;
+            --primary: #FF5757; 
+            --secondary: #C77DFF;
+            --dark: #000000; 
+            --text-dark: #111827; 
+            --text-light: #F1F5F9; 
+            --gray: #B0B0C0; 
+            --border: #333333; 
+            --card-bg-float: rgba(255, 255, 255, 0.05); 
+            --border-float: rgba(255, 255, 255, 0.1); 
+            --light-bg: #1A1A1A; 
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Inter', 'Segoe UI', sans-serif;
-            background: #ffffff;
-            color: var(--dark);
+            background: var(--dark);
+            color: var(--text-light);
             line-height: 1.6;
         }
 .navbar {
-    background: white;
+    background: var(--card-bg-float);
+    backdrop-filter: blur(10px);
     padding: 1rem 5%;
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 1000;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--border-float);
 }
 .logo {
     font-size: 1.8rem;
     font-weight: 800;
-    color: var(--primary);
+    color: var(--secondary);
 }
 .nav-center {
     display: flex;
@@ -43,7 +49,7 @@
 }
 .nav-center a {
     text-decoration: none;
-    color: #374151;
+    color: var(--gray);
     font-weight: 600;
     position: relative;
 }
@@ -59,16 +65,17 @@
 .search-box {
     display: flex;
     align-items: center;
-    background: #f3f4f6;
+    background: rgba(255, 255, 255, 0.15);
     border-radius: 50px;
     padding: 0.5rem 1rem;
-    border: 1.5px solid #d1d5db;
+    border: 1.5px solid var(--border-float);
 }
 .search-box input {
     border: none; background: none; outline: none;
     padding: 0 0.8rem; font-size: 1rem; width: 180px;
+    color: var(--text-light);
 }
-.search-icon { color: #6b7280; font-size: 1.3rem; }
+.search-icon { color: var(--gray); font-size: 1.3rem; }
 
 
 .auth-buttons {
@@ -86,32 +93,32 @@
     text-decoration: none;
     transition: all 0.3s;
 }
-.btn-login:hover { background: var(--primary); color: white; }
+.btn-login:hover { background: var(--primary); color: var(--text-dark); }
 .btn-signup {
     padding: 0.6rem 1.6rem;
     background: var(--primary);
-    color: white;
+    color: var(--text-dark);
     border-radius: 8px;
     font-weight: 600;
     text-decoration: none;
     transition: all 0.3s;
 }
-.btn-signup:hover { background: #4338ca; }
+.btn-signup:hover { background: var(--secondary); }
 
         .courses-hero {
             text-align: center;
             padding: 180px 5% 100px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: var(--dark);
         }
         .courses-hero h1 {
             font-size: 4rem;
             font-weight: 800;
-            color: var(--light);
+            color: var(--text-light);
             margin-bottom: 1rem;
         }
         .courses-hero p {
             font-size: 1.3rem;
-            color: var(--light);
+            color: var(--gray);
             max-width: 700px;
             margin: 0 auto;
         }
@@ -121,6 +128,7 @@
             padding: 80px 5% 120px;
             max-width: 1300px;
             margin: 0 auto;
+            background: var(--light-bg);
         }
         .course-grid {
             display: grid;
@@ -128,23 +136,25 @@
             gap: 2.5rem;
         }
         .course-card {
-            background: white;
+            background: var(--card-bg-float);
+            backdrop-filter: blur(8px);
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             transition: all 0.4s;
-            border: 1px solid var(--border);
+            border: 1px solid var(--border-float);
             text-decoration: none;
             color: inherit;
         }
         .course-card:hover {
             transform: translateY(-15px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
         }
         .course-img {
             width: 100%;
             height: 220px;
             object-fit: cover;
+            filter: brightness(0.8);
         }
         .course-info {
             padding: 1.8rem;
@@ -153,7 +163,7 @@
             font-size: 1.7rem;
             font-weight: 700;
             margin-bottom: 0.8rem;
-            color: var(--dark);
+            color: var(--text-light);
         }
         .course-info p {
             color: var(--gray);
@@ -168,8 +178,8 @@
             color: var(--gray);
         }
         .course-level {
-            background: #ecfdf5;
-            color: #065f46;
+            background: rgba(199, 125, 255, 0.2);
+            color: var(--secondary);
             padding: 0.4rem 0.9rem;
             border-radius: 50px;
             font-weight: 600;
@@ -182,7 +192,7 @@
             text-align: center;
             padding: 3rem;
             background: var(--dark);
-            color: white;
+            color: var(--gray);
             font-size: 0.95rem;
         }
         
@@ -225,7 +235,7 @@
             animation: fadeInUp 1s ease-out;
         }
         .course-card {
-            animation: scaleIn 0.8s ease-out both;
+            animation: scaleIn  0.8s ease-out both;
         }
 
         .course-card:nth-child(1) { animation-delay: 0.1s; }
